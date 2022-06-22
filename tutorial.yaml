@@ -48,3 +48,56 @@ microservice_more_lists:
     # YAML have 3 expression show booleans
     deployed: false
 
+# multi line strings
+## (|) meaning multi line
+multilineString: |
+  this is a multiline string
+  and this is the next line
+  next line
+
+#single line string
+## (>) meaning single line
+singlelineString: >
+  this is a single line string,
+  that should be all on one line.
+  some other stuff
+
+# environment variable
+# $
+command:
+  - /bin/sh
+  - -ec
+  - >-
+    mysql -h 127.0.0.1 -u root -p$MYSQL_ROOT_PASSWORD -e 'SELECT 1'
+
+# placeholders
+apiVersion: v1
+kind: Service
+metadata: 
+  name: {{ .Values.service.name }}
+spec:
+  selector:
+    app: {{ .Values.service.app }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetport }}
+
+# multiple yaml documents
+
+---
+
+# placeholders
+apiVersion: v1
+kind: Service
+metadata: 
+  name: {{ .Values.service.name }}
+spec:
+  selector:
+    app: {{ .Values.service.app }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetport }}
+
+
