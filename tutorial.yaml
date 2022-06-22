@@ -1,0 +1,50 @@
+# key-value pairs
+app: user-authentication
+port: 9000
+version: 1.7
+
+# comment here 
+
+# objects
+
+#name object
+microservice:
+# properties
+  app: user-authentication
+  port: 9000
+  version: 1.7
+
+# lists
+microservices:
+## (-) meaning list
+  - app: user-authentication
+    port: 9000
+    version: 1.7
+
+# Booleans
+microservice_news:
+  - app: user-authentication
+    port: 9000
+    version: 1.7
+    # true/false , on/off, yes/no
+    # YAML have 3 expression show booleans
+    deployed: true
+
+# more about list
+microservice_more_lists:
+  - app: user-authentication
+    port: 9000
+    version: 1.7
+    # true/false , on/off, yes/no
+    # YAML have 3 expression show booleans
+    deployed: true
+  - app: shopping-cart
+    port: [9002, 9004, 9006]
+    versions: 
+    - 1.9
+    - 2.0
+    - 2.1
+    # true/false , on/off, yes/no
+    # YAML have 3 expression show booleans
+    deployed: false
+
